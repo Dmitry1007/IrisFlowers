@@ -41,3 +41,7 @@ pyplot.show()
 # histograms
 dataset.hist()
 pyplot.show()
+
+# scatter plot matrix
+scatter_matrix(dataset)
+pyplot.show()
