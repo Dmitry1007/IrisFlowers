@@ -14,7 +14,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
-...
 
 # Load dataset
 url = "https://raw.githubusercontent.com/jbrownlee/Datasets/master/iris.csv"
@@ -53,7 +52,6 @@ y = array[:, 4]
 X_train, X_validation, Y_train, Y_validation = train_test_split(
     X, y, test_size=0.20, random_state=1)
 
-...
 # Spot Check Algorithms
 models = []
 models.append(('LR', LogisticRegression(
@@ -78,3 +76,9 @@ for name, model in models:
 pyplot.boxplot(results, labels=names)
 pyplot.title('Algorithm Comparison')
 pyplot.show()
+
+# Make predictions on validation dataset
+model = SVC(gamma='auto')
+model.fit(X_train, Y_train)
+predictions = model.predict(X_validation)
+print('Predictions: ', predictions)
