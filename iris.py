@@ -32,18 +32,18 @@ print(dataset.describe())
 # class distribution
 print(dataset.groupby('class').size())
 
-# # box and whisker plots
-# dataset.plot(kind='box', subplots=True, layout=(
-#     2, 2), sharex=False, sharey=False)
-# pyplot.show()
+# box and whisker plots
+dataset.plot(kind='box', subplots=True, layout=(
+    2, 2), sharex=False, sharey=False)
+pyplot.show()
 
-# # histograms
-# dataset.hist()
-# pyplot.show()
+# histograms
+dataset.hist()
+pyplot.show()
 
-# # scatter plot matrix
-# scatter_matrix(dataset)
-# pyplot.show()
+# scatter plot matrix
+scatter_matrix(dataset)
+pyplot.show()
 
 # Split-out validation dataset
 array = dataset.values
@@ -81,4 +81,8 @@ pyplot.show()
 model = SVC(gamma='auto')
 model.fit(X_train, Y_train)
 predictions = model.predict(X_validation)
-print('Predictions: ', predictions)
+
+# Evaluate predictions
+print(accuracy_score(Y_validation, predictions))
+print(confusion_matrix(Y_validation, predictions))
+print(classification_report(Y_validation, predictions))
